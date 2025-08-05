@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Image Generator</h1>
+            <p>Generate images using ComfyUI</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <div class="form-group">
+                    <label for="prompt">Prompt:</label>
+                    <textarea id="prompt" placeholder="Enter your image description here..." rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="negative-prompt">Negative Prompt:</label>
+                    <textarea id="negative-prompt" placeholder="What to avoid in the image..." rows="2">text, watermark</textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="width">Width:</label>
+                        <input type="number" id="width" value="512" min="64" max="2048" step="64">
+                    </div>
+                    <div class="form-group">
+                        <label for="height">Height:</label>
+                        <input type="number" id="height" value="512" min="64" max="2048" step="64">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="steps">Steps:</label>
+                        <input type="number" id="steps" value="15" min="1" max="100">
+                    </div>
+                    <div class="form-group">
+                        <label for="cfg">CFG Scale:</label>
+                        <input type="number" id="cfg" value="4" min="1" max="30" step="0.1">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="seed">Seed (optional):</label>
+                    <input type="number" id="seed" placeholder="Leave empty for random">
+                </div>
+
+                <button id="generate-btn" class="generate-btn">Generate Image</button>
+            </div>
+
+            <div class="output-section">
+                <div id="status" class="status"></div>
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Generating image...</p>
+                </div>
+                <div id="result" class="result hidden">
+                    <img id="generated-image" alt="Generated image">
+                    <div class="image-actions">
+                        <button id="download-btn" class="download-btn">Download Image</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
